@@ -530,12 +530,6 @@
         <div class="g-siteHeader_fog" data-js-hamburger-fog=""></div>
         <!-- /.g-siteHeader_fog -->
         <div class="g-siteHeader_inner">
-          <div class="g-siteHeader_root">
-            <div class="g-headerLogo">
-              <img src="./jscss_files/logo_white.png" alt="" />
-            </div>
-
-            </div>
             <!-- /.g-headerSearch -->
             <div class="g-headerMenu">
               <a
@@ -634,12 +628,12 @@
           <section class="l-section is-whitespace" data-js-headerwhitespace="">
             <div class="p-topHero_img" data-js-tophero="">
               <img
-                src="./jscss_files/0top_hero_intro.gif"
+                src="./jscss_files/img/mv.jpg"
                 alt=""
                 class="p-topHero_imgIntro"
                 style="display: none"
               /><img
-                src="./jscss_files/0top_hero_main.gif"
+                src="./jscss_files/img/mv2.jpg"
                 alt=""
                 class="p-topHero_imgMain"
                 style="display: inline"
@@ -690,7 +684,7 @@
                   <div class="c-card-type4" style="visibility: hidden">
                     <div class="c-card-type4_img">
                       <img
-                        src="./jscss_files/0top_business_dummy1.png"
+                        src="./jscss_files/img/case34_01v.jpg"
                         alt=""
                       />
                     </div>
@@ -704,7 +698,7 @@
                   <div class="c-card-type4" style="visibility: hidden">
                     <div class="c-card-type4_img">
                       <img
-                        src="./jscss_files/0top_business_dummy2.png"
+                        src="./jscss_files/img/mv3.jpg"
                         alt=""
                       />
                     </div>
@@ -925,7 +919,7 @@
                   <div class="c-card-type4" style="visibility: hidden">
                     <div class="c-card-type4_img">
                       <img
-                        src="./jscss_files/0top_business_dummy1.png"
+                        src="./jscss_files/img/case35_01v.jpg"
                         alt=""
                       />
                     </div>
@@ -939,7 +933,7 @@
                   <div class="c-card-type4" style="visibility: hidden">
                     <div class="c-card-type4_img">
                       <img
-                        src="./jscss_files/0top_business_dummy2.png"
+                        src="./jscss_files/img/science_1-1024x725.jpg"
                         alt=""
                       />
                     </div>
@@ -1105,30 +1099,7 @@
         </main>
         <!-- /.g-pageMain -->
       </div>
-      <!-- /.g-container -->
-      <div class="c-breadcrumb" data-js-breadcrumb="">
-        <div class="l-inner">
-          <ul class="c-breadcrumb_list">
-            <li class="c-breadcrumb_listItem">
-              <img
-                src="./jscss_files/ic_home.png"
-                alt=""
-                class="c-breadcrumb_listItemIcon"
-              />
-            </li>
-          </ul>
-          <!-- /.c-breadcrumb_list -->
-        </div>
-        <div class="g-fixedIcon" data-js-pagetop="">
-          <div class="g-fixedIcon_link">
-            <img
-              src="./jscss_files/ic_chevron_bottom.png"
-              alt=""
-              class="g-fixedIcon_image"
-            />
-          </div>
-        </div>
-        <!-- /.g-fixedIcon -->
+
       </div>
       <!-- /.c-breadcrumb -->
       <footer class="g-siteFooter" data-js-footer="" id="contact">
@@ -2191,6 +2162,71 @@
           height: auto;
           padding: 20px 0;
         }
+      }
+      
+      /* フッターエリアのスタイル調整 */
+      .g-siteFooter {
+        padding-top: 40px;
+        background: #6e777a;
+      }
+      
+      .g-footerNav {
+        padding: 20px 0;
+      }
+      
+      .g-footerMenu {
+        padding: 15px 0;
+      }
+      
+      .g-footerNav_listItem:nth-child(n+2) {
+        margin-top: 5px;
+      }
+      
+      @media screen and (max-width: 767px) {
+        .g-siteFooter {
+          padding-top: 30px;
+        }
+        
+        .g-footerNav {
+          padding: 15px 0;
+        }
+        
+        .g-footerMenu {
+          padding: 10px 0;
+        }
+      }
+      
+      /* 企業情報セクションの画像サイズ調整 */
+      #company .c-card-type4_img {
+        max-height: 240px;
+        overflow: hidden;
+      }
+      
+      #company .c-card-type4_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      
+      /* 企業情報セクションとお客様と歩むセクションのカードサイズを統一 */
+      .c-card-type4 {
+        height: 100%;
+      }
+      
+      .c-card-type4_img {
+        max-height: 240px;
+        overflow: hidden;
+      }
+      
+      .c-card-type4_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.4s ease;
+      }
+      
+      .c-card-type4:hover .c-card-type4_img img {
+        transform: scale(1.05);
       }
     </style>
     <script>
