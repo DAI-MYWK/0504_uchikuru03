@@ -557,13 +557,13 @@
                   <li class="u-large-none g-headerNav_listItem">
                     <a
                       class="u-icon-forward u-icon-right g-headerNav_listItemLink"
-                      href="https://www.space-tokyo.co.jp/"
+                      href="#top"
                       >TOP</a
                     >
                   </li>
                   <!-- /.g-headerNav_listItem -->
                   <li class="g-headerNav_listItem" data-js-dropdown-wrapper="">
-                    企業情報
+                    <a href="#company" class="g-headerNav_listItemLink">企業情報</a>
                     <div
                       class="g-headerDropDown"
                       data-js-dropdown-content=""
@@ -575,7 +575,7 @@
                   </li>
                   <!-- /.g-headerNav_listItem -->
                   <li class="g-headerNav_listItem" data-js-dropdown-wrapper="">
-                    事業内容
+                    <a href="#business" class="g-headerNav_listItemLink">事業内容</a>
                     <div
                       class="g-headerDropDown"
                       data-js-dropdown-content=""
@@ -595,17 +595,21 @@
                   </li>
                   <!-- /.g-headerNav_listItem -->
                   <li class="g-headerNav_listItem">
-                    事例紹介
+                    <a href="#works" class="g-headerNav_listItemLink">事例紹介</a>
                   </li>
                   
                   <li class="g-headerNav_listItem">
-                    採用情報
+                    <a href="#voice" class="g-headerNav_listItemLink">お客様の声</a>
+                  </li>
+                  
+                  <li class="g-headerNav_listItem">
+                    <a href="#recruitment" class="g-headerNav_listItemLink">採用情報</a>
                   </li>
                   <li class="g-headerNav_listItem">
                     <nav class="g-headerSubNav">
                       <ul class="g-headerSubNav_list">
                         <li class="g-headerSubNav_listItem">
-                          お問い合わせ
+                          <a href="#contact" class="g-headerSubNav_listItemLink">お問い合わせ</a>
                         </li>
                       </ul>
                       <!-- g-headerSubNav_list -->
@@ -651,7 +655,7 @@
             </div>
           </section>
 
-          <section class="l-section u-mbottom-80-pc">
+          <section class="l-section u-mbottom-80-pc" id="company">
             <div class="l-sectionInner_l l-beforeBg l-beforeBg-left">
               <div class="l-grid">
                 <div class="l-grid_item l-grid_item-35per">
@@ -715,7 +719,7 @@
             <!-- /.l-sectionInner_l -->
           </section>
           <!-- 事業内容セクション開始 -->
-          <section class="l-section p-business">
+          <section class="l-section p-business" id="business">
             <div
               class="l-bgImg l-bgImg-right u-right-10min-pc u-mtop-20min u-mbottom-220min-pc u-mbottom-75min-sp u-mright-25min-sp"
             >
@@ -869,7 +873,7 @@
           <!-- /.l-section -->
           <!-- 事業内容セクション終了 -->
           <!-- /.l-section -->
-          <section class="l-section u-mbottom-80-pc">
+          <section class="l-section u-mbottom-80-pc" id="works">
             <div class="l-sectionInner_l l-beforeBg l-beforeBg-right">
               <h2 class="c-headingLv2 u-ta-right u-ta-left-sm">
                 <span class="c-heading_subText">Works</span
@@ -1024,7 +1028,7 @@
             <!-- /.l-sectionInner_l -->
           </section>
           <!-- /.l-section -->
-          <section class="l-section u-mtop-450min">
+          <section class="l-section u-mtop-450min" id="voice">
             <div
               class="l-sectionInner_l l-beforeBg l-beforeBg-type2 l-beforeBg-right u-ptop-40 u-pbottom-40 u-mright-10-sp"
             >
@@ -1047,7 +1051,7 @@
                         class="u-sp-none"
                       />様々なニーズに対応し、<br
                         class="u-sp-none"
-                      />お客様の理想の空間づくりをサポートしています。
+                      />お客様の理想の空間づくりをサポートします。
                     </p>
                   </div>
                 </div>
@@ -1126,7 +1130,7 @@
               <!-- /.l-grid -->
             </div>
             <!-- 採用情報セクション開始 -->
-            <section class="l-section p-business">
+            <section class="l-section p-business" id="recruitment">
               <div class="l-sectionInner_l l-beforeBg l-beforeBg-left">
                 <h2 class="c-headingLv2">
                   <span class="c-heading_subText">Recruitment</span
@@ -1170,7 +1174,7 @@
             <!-- 採用情報セクション終了 -->
             <!-- /.l-sectionInner_l -->
           </section>
-          <!-- /.l-section -->
+
           <!-- / Layouts & Components Area -->
         </main>
         <!-- /.g-pageMain -->
@@ -1201,7 +1205,7 @@
         <!-- /.g-fixedIcon -->
       </div>
       <!-- /.c-breadcrumb -->
-      <footer class="g-siteFooter" data-js-footer="">
+      <footer class="g-siteFooter" data-js-footer="" id="contact">
         <div class="g-siteFooter_inner">
           <div class="g-footerLogo">
             <img src="./jscss_files/logo_white.png" alt="" />
@@ -2247,6 +2251,55 @@
           height: 150px;
         }
       }
+      
+      /* グローバルナビゲーションの調整 */
+      .g-headerNav_listItemLink {
+        display: flex;
+        align-items: center;
+        height: 60px;
+        padding: 0;
+      }
+      
+      @media screen and (max-width: 767px) {
+        .g-headerNav_listItemLink {
+          height: auto;
+          padding: 20px 0;
+        }
+      }
     </style>
+    <script>
+      // スムーススクロール
+      document.addEventListener('DOMContentLoaded', function() {
+        const links = document.querySelectorAll('a[href^="#"]');
+        
+        for (const link of links) {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+              const headerHeight = document.querySelector('.g-siteHeader').offsetHeight;
+              const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+              
+              window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+              });
+              
+              // モバイルメニューを閉じる
+              const hamburgerContent = document.querySelector('[data-js-hamburger-content]');
+              if (hamburgerContent.getAttribute('aria-hidden') === 'false') {
+                const hamburgerTrigger = document.querySelector('[data-js-hamburger-trigger]');
+                if (hamburgerTrigger) {
+                  hamburgerTrigger.click();
+                }
+              }
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>
