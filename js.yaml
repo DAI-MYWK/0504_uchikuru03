@@ -1,0 +1,114 @@
+# JSで実装できるインタラクション例（20件）
+- id: smooth_scroll
+  title: スムーズスクロール
+  description: ページ内リンクをクリックしたときに滑らかにスクロールする
+  code: |-
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', e => {
+        e.preventDefault();
+        document.querySelector(anchor.getAttribute('href'))
+          .scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+- id: fade_in_on_scroll
+  title: スクロール時フェードイン
+  description: 要素がビューポートに入ったらフェードイン
+  code: |-
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          io.unobserve(entry.target);
+        }
+      });
+    });
+    document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+- id: parallax_mouse
+  title: マウス追従パララックス
+  description: マウス位置に応じて背景レイヤーがパララックス移動
+  code: |-
+    document.addEventListener('mousemove', e => {
+      document.querySelectorAll('[data-depth]').forEach(layer => {
+        const depth = layer.dataset.depth;
+        const x = (window.innerWidth  - e.clientX * depth) / 100;
+        const y = (window.innerHeight - e.clientY * depth) / 100;
+        layer.style.transform = `translate3d(${x}px,${y}px,0)`;
+      });
+    });
+
+- id: swiper_carousel
+  title: Swiperカルーセル
+  description: 画像スライダー（Swiper.js使用）
+  dependencies: ["https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"]
+  code: |-
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      pagination: { el: '.swiper-pagination' },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+      }
+    });
+
+- id: modal_dialog
+  title: モーダルダイアログ
+  description: showModal/closeで開閉
+  code: |-
+    const openBtn  = document.querySelector('#openModal');
+    const modal    = document.querySelector('#modal');
+    const closeBtn = modal.querySelector('.close');
+    openBtn.addEventListener('click', () => modal.showModal());
+    closeBtn.addEventListener('click', () => modal.close());
+
+- id: lazy_load
+  title: 画像遅延読み込み
+  description: IntersectionObserverでimgを後読み込み
+  code: |-
+    const imgIO = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.src = e.target.dataset.src;
+          imgIO.unobserve(e.target);
+        }
+      });
+    });
+    document.querySelectorAll('img[data-src]')
+      .forEach(img => imgIO.observe(img));
+
+- id: scroll_progress
+  title: スクロール進行バー
+  description: 画面上部にスクロール量を可視化
+  code: |-
+    const bar = document.querySelector('#scrollBar');
+    window.addEventListener('scroll', () => {
+      const h   = document.documentElement;
+      const per = h.scrollTop / (h.scrollHeight - h.clientHeight);
+      bar.style.transform = `scaleX(${per})`;
+    });
+
+- id: back_to_top
+  title: トップに戻るボタン
+  description: 300pxスクロールで表示、クリックでトップへ
+  code: |-
+    const btn = document.querySelector('#toTop');
+    window.addEventListener('scroll', () => {
+      btn.hidden = window.scrollY < 300;
+    });
+    btn.addEventListener('click', () =>
+      window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+- id: infinite_marquee
+  title: 無限マルキー
+  description: テキストが水平に無限スクロール
+  code: |-
+    const marquee = document.querySelector('.marquee');
+    marquee.innerHTML += marquee.innerHTML; // 2倍
+    let pos = 0;
+    (function loop() {
+      pos -= 1;
+      marquee.style.transform = `translateX(${pos}px)`;
+      if (-pos >= marquee.scrollWidth / 2) pos = 0;
+      requestAnimationFrame(loop);
+    })();
