@@ -417,6 +417,7 @@ header {
   transition: opacity 0.8s ease, transform 0.8s ease;
   will-change: opacity, transform;
   padding: 20px;
+  padding-left: 60px;
 }
 
 .concept-text-wrapper.show {
@@ -440,8 +441,9 @@ header {
   transition: opacity 0.8s ease, transform 0.8s ease;
   will-change: opacity, transform;
   height: 100%;
-  width: 80%;
-  margin-left: auto;
+  width: 90%;
+  margin-left: 5%;
+  margin-right: auto;
 }
 
 .concept-image-wrapper.show {
