@@ -1,5 +1,17 @@
 // ローディングアニメーション
 document.addEventListener("DOMContentLoaded", function () {
+  // ページリロード時に一番上にスクロール - スクロール位置の復元を無効化
+  if (history.scrollRestoration) {
+    history.scrollRestoration = "manual";
+  }
+
+  // 強制的にスクロール位置をリセット
+  window.scrollTo(0, 0);
+
+  window.onbeforeunload = function () {
+    window.scrollTo(0, 0);
+  };
+
   // 最初はヒーローセクションのフェードインを遅延させる
   const heroElements = document.querySelectorAll(
     ".hero .en-title, .hero .ja-title, .hero .sub-copy, .hero .cta-buttons"
@@ -19,6 +31,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // ページが完全に読み込まれるのを待つ
   window.addEventListener("load", function () {
+    // 完全に読み込まれた時点でも強制的に最上部にスクロール
+    window.scrollTo(0, 0);
+
     // アニメーションが完了するまで少し待つ
     setTimeout(function () {
       const loadingOverlay = document.getElementById("loading-overlay");

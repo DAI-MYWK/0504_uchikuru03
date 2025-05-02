@@ -4,6 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>株式会社家来（うちくる） | 建築を、もっと自由に。</title>
+    <!-- スクロール位置リセット用 -->
+    <script>
+      // ページリロード時にスクロール位置をリセット
+      if (history.scrollRestoration) {
+        history.scrollRestoration = "manual";
+      }
+      window.onload = function () {
+        window.scrollTo(0, 0);
+      };
+    </script>
     <!-- ファビコン -->
     <link
       rel="icon"
@@ -29,7 +39,7 @@
       rel="stylesheet"
     />
   </head>
-  <body>
+  <body id="top">
     <!-- ローディングオーバーレイ -->
     <div id="loading-overlay">
       <div class="loading-container">
