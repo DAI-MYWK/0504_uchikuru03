@@ -239,6 +239,18 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--light-text);
 }
 
+.btn-white {
+  background-color: #fff;
+  border-color: #fff;
+  color: #000;
+}
+
+.btn-white:hover {
+  background-color: #f8f8f8;
+  border-color: #f8f8f8;
+  color: #000;
+}
+
 /* スクロールプログレスバー */
 #scrollBar {
   position: fixed;
@@ -288,6 +300,24 @@ h1, h2, h3, h4, h5, h6 {
   transform: translateY(0);
 }
 
+/* 左右からフェードインするアニメーション */
+.fade-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-left.show, .fade-right.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 /* ==================== ヘッダー ==================== */
 header {
   z-index: 1000;
@@ -296,7 +326,7 @@ header {
 .navbar {
   padding: 20px 0;
   transition: all 0.4s ease;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: #000;
 }
 
 .navbar-dark .navbar-nav .nav-link {
@@ -336,37 +366,28 @@ header {
   justify-content: center;
   color: var(--light-text);
   text-align: center;
-}
-
-.hero-swiper {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
-.swiper-slide {
   background-size: cover;
   background-position: center;
-  position: relative;
-}
-
-.swiper-slide::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .hero-content {
   width: 100%;
   padding: 0 15px;
   z-index: 10;
+  position: relative;
+}
+
+/* タイトルに背景を追加 */
+.hero .en-title,
+.hero .ja-title,
+.hero .sub-copy {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 10px 25px;
+  border-radius: 5px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .en-title {
@@ -388,36 +409,77 @@ header {
   display: flex;
   justify-content: center;
   gap: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  display: inline-flex;
+  padding: 15px 25px;
 }
 
 /* ==================== コンセプトセクション ==================== */
-.concept-row {
-  margin-top: 30px;
-  align-items: center;
+#concept {
+  padding: 0;
+  position: relative;
 }
 
-.concept-text-col {
-  padding: 30px 50px;
+.concept-container {
+  position: relative;
+  height: 80vh;
+  min-height: 600px;
+  width: 100%;
+}
+
+.concept-swiper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.concept-swiper .swiper-slide {
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.concept-swiper .swiper-slide::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.4) 100%);
+}
+
+.concept-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
   display: flex;
   align-items: center;
-  background-color: #fff;
 }
 
-.concept-image-col {
-  padding: 0;
-  height: 100%;
+.concept-content {
+  max-width: 100%;
+  padding: 50px 0;
 }
 
 .concept-text-wrapper {
-  max-width: 500px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 100%;
   opacity: 0;
   transform: translateX(-50px);
   transition: opacity 0.8s ease, transform 0.8s ease;
   will-change: opacity, transform;
-  padding: 20px;
-  padding-left: 60px;
+  padding: 0 20px;
+}
+
+.concept-text-wrapper.fade-right {
+  transform: translateX(50px);
 }
 
 .concept-text-wrapper.show {
@@ -425,73 +487,32 @@ header {
   transform: translateX(0);
 }
 
+.text-white {
+  color: white !important;
+}
+
 .concept-text {
   max-width: 100%;
   margin: 0 auto;
   text-align: left;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 2;
-}
-
-.concept-image-wrapper {
-  position: relative;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateX(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-  will-change: opacity, transform;
-  height: 100%;
-  width: 90%;
-  margin-left: 5%;
-  margin-right: auto;
-}
-
-.concept-image-wrapper.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.concept-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* 左右からフェードインするアニメーション */
-.fade-left {
-  opacity: 0;
-  transform: translateX(-50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-right {
-  opacity: 0;
-  transform: translateX(50px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.fade-left.show, .fade-right.show {
-  opacity: 1;
-  transform: translateX(0);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 /* モバイル対応 */
 @media (max-width: 767px) {
+  .concept-content {
+    padding: 30px 20px;
+  }
+  
   .concept-text {
+    font-size: 1.1rem;
     text-align: center;
   }
   
-  .concept-text-col {
-    padding: 30px 15px;
-  }
-  
-  .concept-image-col {
-    height: 300px;
-  }
-  
-  .concept-image-wrapper {
-    height: 100%;
+  .concept-container {
+    height: 100vh;
   }
 }
 
@@ -606,7 +627,7 @@ header {
   transform: translateX(3px);
 }
 
-/* ==================== フローセクション（矢印型タイムライン） ==================== */
+/* ==================== フローセクション（円形プロセス図） ==================== */
 .flow-intro {
   text-align: center;
   margin-bottom: 50px;
@@ -615,174 +636,173 @@ header {
   margin-right: auto;
 }
 
-.arrow-timeline {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: center;
-  overflow-x: auto;
-  margin-bottom: 60px;
-  padding: 20px 0;
-}
-
-.arrow-step {
+/* 円形プロセス図 */
+.circular-process {
+  padding: 30px 0 70px;
   position: relative;
-  min-width: 140px;
-  height: 160px;
-  background: linear-gradient(to right, #3c5d98, #5585c9);
-  color: white;
-  text-align: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%, 15% 50%);
-  margin-left: -30px;
 }
 
-.arrow-step:first-child {
-  clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%);
-  margin-left: 0;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+.process-container {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
-.arrow-step:last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
-.arrow-content {
-  width: 100%;
-  padding: 0 30px 0 15px;
+/* メインの接続線 */
+.process-line {
+  position: absolute;
+  top: 150px;
+  left: 5%;
+  width: 90%;
+  height: 2px;
+  background-color: #e0e0e0;
   z-index: 1;
 }
 
-.step-number {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.step-title {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.4;
-}
-
-/* 新しいフローステップテキスト部分のスタイル */
-.flow-details {
-  padding: 30px 0;
-}
-
-.flow-steps-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 25px;
-  margin-top: 30px;
-}
-
-.flow-step-box {
-  background-color: white;
-  padding: 25px;
-  border-radius: 6px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+/* プロセスノード */
+.process-node {
+  display: flex;
   position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border-top: 3px solid #5585c9;
+  margin-bottom: 80px;
+  z-index: 2;
 }
 
-.flow-step-box:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+.process-node:nth-child(odd) {
+  flex-direction: row;
+  padding-right: 50%;
+  margin-left: 5%;
 }
 
-.flow-step-number {
-  display: inline-flex;
+.process-node:nth-child(even) {
+  flex-direction: row-reverse;
+  padding-left: 50%;
+  margin-right: 5%;
+}
+
+/* ノードの円形部分 */
+.node-circle {
+  flex-shrink: 0;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #000;
+  color: #fff;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background-color: #5585c9;
-  color: white;
-  font-weight: bold;
-  font-size: 16px;
-  margin-bottom: 10px;
-}
-
-.flow-step-heading {
-  font-size: 18px;
+  font-size: 1.8rem;
   font-weight: 700;
-  margin-bottom: 15px;
-  color: #333;
-  position: relative;
-  padding-bottom: 10px;
+  margin-right: 20px;
+  margin-left: 20px;
+  z-index: 3;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
 }
 
-.flow-step-heading:after {
+.process-node:hover .node-circle {
+  transform: scale(1.1);
+}
+
+/* アクセントノード（アイコン付き） */
+.accent-node {
+  background-color: #666;
+}
+
+.node-icon {
+  font-size: 2rem;
+  font-style: normal;
+}
+
+/* ノードのテキスト部分 */
+.node-content {
+  background-color: #fff;
+  padding: 20px 25px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  max-width: 350px;
+  transition: transform 0.3s ease;
+}
+
+.process-node:hover .node-content {
+  transform: translateY(-5px);
+}
+
+.node-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #000;
+}
+
+.node-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #666;
+  margin-bottom: 0;
+}
+
+/* 小さい灰色の円 - 接続線上の装飾 */
+.process-node::before {
   content: '';
   position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background-color: #5585c9;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ccc;
+  top: calc(50% - 6px);
+  z-index: 2;
 }
 
-.flow-step-text {
-  font-size: 14px;
-  line-height: 1.7;
-  color: #666;
+.process-node:nth-child(odd)::before {
+  right: 50%;
+  margin-right: -7px;
 }
 
+.process-node:nth-child(even)::before {
+  left: 50%;
+  margin-left: -7px;
+}
+
+/* レスポンシブ対応 */
 @media (max-width: 991px) {
-  .arrow-timeline {
-    justify-content: flex-start;
-    padding-bottom: 20px;
+  .process-line {
+    left: 30px;
+    width: 2px;
+    height: 90%;
+    top: 5%;
   }
   
-  .arrow-step {
-    min-width: 120px;
-    height: 140px;
+  .process-node,
+  .process-node:nth-child(odd),
+  .process-node:nth-child(even) {
+    flex-direction: row;
+    padding-right: 0;
+    padding-left: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 50px;
+    margin-bottom: 40px;
   }
   
-  .step-number {
-    font-size: 20px;
+  .process-node::before,
+  .process-node:nth-child(odd)::before,
+  .process-node:nth-child(even)::before {
+    left: 30px;
+    top: -30px;
+    margin-left: 0;
   }
   
-  .step-title {
-    font-size: 12px;
+  .node-circle {
+    margin-right: 15px;
+    margin-left: 0;
+    width: 60px;
+    height: 60px;
+    font-size: 1.4rem;
   }
   
-  .flow-steps-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 767px) {
-  .arrow-step {
-    min-width: 90px;
-    height: 120px;
-    margin-left: -20px;
-  }
-  
-  .arrow-content {
-    padding: 0 20px 0 10px;
-  }
-  
-  .step-number {
-    font-size: 18px;
-  }
-  
-  .step-title {
-    font-size: 11px;
-  }
-  
-  .flow-steps-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .flow-step-box {
-    margin-bottom: 15px;
+  .node-content {
+    max-width: 100%;
   }
 }
 
@@ -1153,7 +1173,7 @@ address {
 /* ハイライト効果 */
 .strength-card:hover .strength-icon svg path,
 .strength-card:hover .strength-icon svg text {
-  stroke: #3c5d98; /* FLOWセクションの矢印色に合わせる */
+  stroke: #000; /* FLOWセクションの矢印色に合わせる - 黒に変更 */
   transition: stroke 0.3s ease;
 }
 

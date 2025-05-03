@@ -70,14 +70,14 @@ function initConceptAnimation() {
           console.log("コンセプト要素が画面に入りました:", entry.target);
 
           // 左側のテキスト要素がフェードイン
-          if (entry.target.classList.contains("concept-text-wrapper")) {
+          if (entry.target.classList.contains("fade-left")) {
             setTimeout(() => {
               entry.target.classList.add("show");
             }, 200);
           }
 
-          // 右側の画像要素がフェードイン
-          if (entry.target.classList.contains("concept-image-wrapper")) {
+          // 右側のテキスト要素がフェードイン
+          if (entry.target.classList.contains("fade-right")) {
             setTimeout(() => {
               entry.target.classList.add("show");
             }, 400);
@@ -95,18 +95,22 @@ function initConceptAnimation() {
   );
 
   // 監視対象の要素を登録
-  const leftElement = document.querySelector(".concept-text-wrapper");
-  const rightElement = document.querySelector(".concept-image-wrapper");
+  const leftElements = document.querySelectorAll(
+    ".concept-text-wrapper.fade-left"
+  );
+  const rightElements = document.querySelectorAll(
+    ".concept-text-wrapper.fade-right"
+  );
 
-  if (leftElement) {
+  leftElements.forEach((element) => {
     console.log("左側テキスト要素を監視します");
-    conceptObserver.observe(leftElement);
-  }
+    conceptObserver.observe(element);
+  });
 
-  if (rightElement) {
-    console.log("右側画像要素を監視します");
-    conceptObserver.observe(rightElement);
-  }
+  rightElements.forEach((element) => {
+    console.log("右側テキスト要素を監視します");
+    conceptObserver.observe(element);
+  });
 }
 
 // スムーズスクロール
@@ -175,12 +179,12 @@ btn.addEventListener("click", () =>
 
 // Swiperカルーセル
 document.addEventListener("DOMContentLoaded", function () {
-  const swiper = new Swiper(".hero-swiper", {
+  const conceptSwiper = new Swiper(".concept-swiper", {
     loop: true,
     effect: "fade",
-    speed: 667,
+    speed: 1000,
     autoplay: {
-      delay: 3333,
+      delay: 4000,
       disableOnInteraction: false,
     },
     pagination: {
@@ -195,10 +199,10 @@ window.addEventListener("scroll", function () {
   const navbar = document.querySelector(".navbar");
   if (window.scrollY > 100) {
     navbar.style.padding = "10px 0";
-    navbar.style.backgroundColor = "rgba(0, 0, 0, 0.9)";
+    navbar.style.backgroundColor = "#000";
   } else {
     navbar.style.padding = "20px 0";
-    navbar.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+    navbar.style.backgroundColor = "#000";
   }
 });
 
@@ -240,51 +244,70 @@ document.querySelectorAll(".service-card").forEach((card) => {
   });
 });
 
-// 矢印タイムラインのアニメーション
+// 円形プロセス図のアニメーション
 document.addEventListener("DOMContentLoaded", function () {
-  const arrowSteps = document.querySelectorAll(".arrow-step");
+  // 円形プロセスノードのアニメーション
+  const processNodes = document.querySelectorAll(".process-node");
 
-  // 矢印が順番に表示されるアニメーション
-  arrowSteps.forEach((step, index) => {
+  // プロセスノードが順番に表示されるアニメーション
+  processNodes.forEach((node, index) => {
     // 最初は全て非表示
-    step.style.opacity = "0";
-    step.style.transform = "translateX(20px)";
+    node.style.opacity = "0";
+    node.style.transform = "translateY(20px)";
 
-    // IntersectionObserverを使わずにタイムアウトでアニメーション
-    setTimeout(() => {
-      step.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-      step.style.opacity = "1";
-      step.style.transform = "translateX(0)";
-    }, 200 + index * 150); // 各ステップに遅延をつける
-  });
-
-  // フローステップボックスのアニメーション
-  const flowStepBoxes = document.querySelectorAll(".flow-step-box");
-  flowStepBoxes.forEach((box, index) => {
-    // 初期状態は非表示
-    box.style.opacity = "0";
-    box.style.transform = "translateY(20px)";
-
-    // スクロールでフェードイン
+    // IntersectionObserverを使用してスクロール時に表示
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             setTimeout(() => {
-              box.style.transition = "opacity 0.5s ease, transform 0.5s ease";
-              box.style.opacity = "1";
-              box.style.transform = "translateY(0)";
-            }, 300 + (index % 4) * 150); // 各行の要素に少しずつ遅延
+              node.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+              node.style.opacity = "1";
+              node.style.transform = "translateY(0)";
+            }, 200 + index * 150); // 各ノードに遅延をつける
 
-            observer.unobserve(box);
+            observer.unobserve(node);
           }
         });
       },
       { threshold: 0.2 }
     );
 
-    observer.observe(box);
+    observer.observe(node);
   });
+
+  // 接続線のアニメーション
+  const processLine = document.querySelector(".process-line");
+  if (processLine) {
+    processLine.style.width = "0";
+    // または縦向きの場合: processLine.style.height = "0";
+
+    const lineObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              // 水平線のアニメーション
+              if (window.innerWidth > 991) {
+                processLine.style.transition = "width 1.5s ease";
+                processLine.style.width = "90%";
+              }
+              // 垂直線のアニメーション（モバイル）
+              else {
+                processLine.style.transition = "height 1.5s ease";
+                processLine.style.height = "90%";
+              }
+            }, 200);
+
+            lineObserver.unobserve(processLine);
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    lineObserver.observe(processLine);
+  }
 });
 
 // マウスホバーエフェクト

@@ -113,24 +113,7 @@
     </header>
 
     <!-- メインビジュアル -->
-    <section class="hero">
-      <div class="swiper hero-swiper">
-        <div class="swiper-wrapper">
-          <div
-            class="swiper-slide"
-            style="background-image: url('img/main02.png')"
-          ></div>
-          <div
-            class="swiper-slide"
-            style="background-image: url('img/house02.png')"
-          ></div>
-          <div
-            class="swiper-slide"
-            style="background-image: url('img/office02.png')"
-          ></div>
-        </div>
-        <div class="swiper-pagination"></div>
-      </div>
+    <section class="hero" style="background-image: url('img/main04.png')">
       <div class="hero-content">
         <div class="container">
           <h1 class="en-title fade">Architecture More Freely</h1>
@@ -138,7 +121,7 @@
           <p class="sub-copy fade">住まいもお店も、"らしさ"を形にする。</p>
           <div class="cta-buttons fade">
             <a href="#projects" class="btn btn-primary">施工事例を見る</a>
-            <a href="#contact" class="btn btn-outline-light">相談する</a>
+            <a href="#contact" class="btn btn-white">相談する</a>
           </div>
         </div>
       </div>
@@ -146,32 +129,68 @@
 
     <!-- コンセプト -->
     <section id="concept" class="section">
-      <div class="container-fluid">
-        <div class="container">
-          <h2 class="section-title fade">CONCEPT</h2>
-        </div>
-        <div class="row concept-row no-gutters">
-          <div class="col-md-4 concept-text-col">
-            <div class="concept-text-wrapper fade-left">
-              <h3 class="section-subtitle">「家来」の社名に込めた想い</h3>
-              <div class="section-content">
-                <p class="concept-text">
-                  家来と書いて、"うちくる"と読みます。<br />
-                  住まい・オフィス・お店・工場まで、<br />
-                  人と空間が心地よくつながるように計画。<br />
-                  地元福井で育んだ知恵とすばやい動きで、<br />
-                  お客様の「こうしたい」を形にします。
-                </p>
-              </div>
-            </div>
+      <div class="concept-container">
+        <!-- スライドショー背景 -->
+        <div class="swiper concept-swiper">
+          <div class="swiper-wrapper">
+            <div
+              class="swiper-slide"
+              style="background-image: url('img/main02.png')"
+            ></div>
+            <div
+              class="swiper-slide"
+              style="background-image: url('img/house02.png')"
+            ></div>
+            <div
+              class="swiper-slide"
+              style="background-image: url('img/office02.png')"
+            ></div>
           </div>
-          <div class="col-md-8 concept-image-col">
-            <div class="concept-image-wrapper fade-right">
-              <img
-                src="img/about02.png"
-                alt="建築コンセプト"
-                class="img-fluid concept-image"
-              />
+          <div class="swiper-pagination"></div>
+        </div>
+
+        <!-- コンセプトテキスト（オーバーレイとして配置） -->
+        <div class="concept-overlay">
+          <div class="container">
+            <h2 class="section-title text-white fade">CONCEPT</h2>
+            <div class="concept-content">
+              <div class="row">
+                <!-- 左側：社名に込めた想い -->
+                <div class="col-md-6">
+                  <div class="concept-text-wrapper fade-left">
+                    <h3 class="section-subtitle text-white">
+                      「家来」の社名に込めた想い
+                    </h3>
+                    <div class="section-content">
+                      <p class="concept-text text-white">
+                        家来と書いて、"うちくる"と読みます。<br />
+                        住まい・オフィス・お店・工場まで、<br />
+                        人と空間が心地よくつながるように計画。<br />
+                        地元福井で育んだ知恵とすばやい動きで、<br />
+                        お客様の「こうしたい」を形にします。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 右側：追加テキスト -->
+                <div class="col-md-6">
+                  <div class="concept-text-wrapper fade-right">
+                    <h3 class="section-subtitle text-white">
+                      空間づくりへのこだわり
+                    </h3>
+                    <div class="section-content">
+                      <p class="concept-text text-white">
+                        すべてのプロジェクトは、お客様の想いを大切に。<br />
+                        素材の選定から施工まで、細部にこだわり、<br />
+                        長く愛される空間をお届けします。<br />
+                        機能性と美しさを両立し、心地よい場所を<br />
+                        一緒に創り上げていきましょう。
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -189,138 +208,114 @@
           </p>
         </div>
 
-        <!-- 矢印型タイムライン -->
-        <div class="arrow-timeline fade">
-          <!-- ステップ1 -->
-          <div class="arrow-step">
-            <div class="arrow-content">
-              <div class="step-number">①</div>
-              <div class="step-title">ご要望の確認</div>
-            </div>
-          </div>
+        <!-- 円形プロセス図 -->
+        <div class="circular-process fade">
+          <div class="process-container">
+            <!-- メインの線 -->
+            <div class="process-line"></div>
 
-          <!-- ステップ2 -->
-          <div class="arrow-step">
-            <div class="arrow-content">
-              <div class="step-number">②</div>
-              <div class="step-title">計画づくり</div>
-            </div>
-          </div>
-
-          <!-- ステップ3 -->
-          <div class="arrow-step">
-            <div class="arrow-content">
-              <div class="step-number">③</div>
-              <div class="step-title">空間の使い方<br />を考える</div>
-            </div>
-          </div>
-
-          <!-- ステップ4 -->
-          <div class="arrow-step">
-            <div class="arrow-content">
-              <div class="step-number">④</div>
-              <div class="step-title">図面作成</div>
-            </div>
-          </div>
-
-          <!-- ステップ5 -->
-          <div class="arrow-step">
-            <div class="arrow-content">
-              <div class="step-number">⑤</div>
-              <div class="step-title">提案<br />お手続き</div>
-            </div>
-          </div>
-
-          <!-- ステップ6 -->
-          <div class="arrow-step">
-            <div class="arrow-content">
-              <div class="step-number">⑥</div>
-              <div class="step-title">工事・確認</div>
-            </div>
-          </div>
-
-          <!-- ステップ7 -->
-          <div class="arrow-step">
-            <div class="arrow-content">
-              <div class="step-number">⑦</div>
-              <div class="step-title">完成・お渡し</div>
-            </div>
-          </div>
-
-          <!-- ステップ8 -->
-          <div class="arrow-step">
-            <div class="arrow-content">
-              <div class="step-number">⑧</div>
-              <div class="step-title">アフター<br />サポート</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- ステップ詳細テキスト -->
-        <div class="flow-details">
-          <div class="flow-steps-grid fade">
-            <div class="flow-step-box">
-              <div class="flow-step-number">①</div>
-              <h4 class="flow-step-heading">ご要望の確認</h4>
-              <p class="flow-step-text">
-                お問い合わせをいただいたら、まずはじっくりとお話を聞きます。お客様の希望や悩みを丁寧に理解します。
-              </p>
+            <!-- ステップ1 -->
+            <div class="process-node node-1">
+              <div class="node-circle">
+                <span class="node-number">01</span>
+              </div>
+              <div class="node-content">
+                <h4 class="node-title">ご要望の確認</h4>
+                <p class="node-text">
+                  お問い合わせをいただいたら、まずはじっくりとお話を聞きます。お客様の希望や悩みを丁寧に理解します。
+                </p>
+              </div>
             </div>
 
-            <div class="flow-step-box">
-              <div class="flow-step-number">②</div>
-              <h4 class="flow-step-heading">計画づくり</h4>
-              <p class="flow-step-text">
-                大切な課題を見つけたら、全体の方向性を決めていきます。お客様の思いを形にするための土台を作ります。
-              </p>
+            <!-- ステップ2 -->
+            <div class="process-node node-2">
+              <div class="node-circle">
+                <span class="node-number">02</span>
+              </div>
+              <div class="node-content">
+                <h4 class="node-title">計画づくり</h4>
+                <p class="node-text">
+                  大切な課題を見つけたら、全体の方向性を決めていきます。お客様の思いを形にするための土台を作ります。
+                </p>
+              </div>
             </div>
 
-            <div class="flow-step-box">
-              <div class="flow-step-number">③</div>
-              <h4 class="flow-step-heading">空間の使い方を考える</h4>
-              <p class="flow-step-text">
-                どのように過ごす空間にするかを考えます。実際の生活や使い方を想像しながら計画を進めます。
-              </p>
+            <!-- ステップ3 -->
+            <div class="process-node node-3">
+              <div class="node-circle">
+                <span class="node-number">03</span>
+              </div>
+              <div class="node-content">
+                <h4 class="node-title">空間の使い方を考える</h4>
+                <p class="node-text">
+                  どのように過ごす空間にするかを考えます。実際の生活や使い方を想像しながら計画を進めます。
+                </p>
+              </div>
             </div>
 
-            <div class="flow-step-box">
-              <div class="flow-step-number">④</div>
-              <h4 class="flow-step-heading">図面作成</h4>
-              <p class="flow-step-text">
-                具体的な図面や素材、色の組み合わせなどを決めていきます。目に見える形で計画をまとめます。
-              </p>
+            <!-- ステップ4 -->
+            <div class="process-node node-4">
+              <div class="node-circle">
+                <span class="node-number">04</span>
+              </div>
+              <div class="node-content">
+                <h4 class="node-title">図面作成</h4>
+                <p class="node-text">
+                  具体的な図面や素材、色の組み合わせなどを決めていきます。目に見える形で計画をまとめます。
+                </p>
+              </div>
             </div>
 
-            <div class="flow-step-box">
-              <div class="flow-step-number">⑤</div>
-              <h4 class="flow-step-heading">提案・お手続き</h4>
-              <p class="flow-step-text">
-                完成した計画と費用をご説明します。ご納得いただけましたら、正式にお手続きを進めます。
-              </p>
+            <!-- ステップ5 -->
+            <div class="process-node node-5">
+              <div class="node-circle">
+                <span class="node-number">05</span>
+              </div>
+              <div class="node-content">
+                <h4 class="node-title">提案・お手続き</h4>
+                <p class="node-text">
+                  完成した計画と費用をご説明します。ご納得いただけましたら、正式にお手続きを進めます。
+                </p>
+              </div>
             </div>
 
-            <div class="flow-step-box">
-              <div class="flow-step-number">⑥</div>
-              <h4 class="flow-step-heading">工事・確認</h4>
-              <p class="flow-step-text">
-                計画通りに工事を進めます。途中で何度か確認を行い、品質を守りながら進めていきます。
-              </p>
+            <!-- ステップ6 -->
+            <div class="process-node node-6">
+              <div class="node-circle">
+                <span class="node-number">06</span>
+              </div>
+              <div class="node-content">
+                <h4 class="node-title">工事・確認</h4>
+                <p class="node-text">
+                  計画通りに工事を進めます。途中で何度か確認を行い、品質を守りながら進めていきます。
+                </p>
+              </div>
             </div>
 
-            <div class="flow-step-box">
-              <div class="flow-step-number">⑦</div>
-              <h4 class="flow-step-heading">完成・お渡し</h4>
-              <p class="flow-step-text">
-                工事が終わったら、最終確認をして問題がなければお客様に新しい空間をお渡しします。
-              </p>
+            <!-- ステップ7 -->
+            <div class="process-node node-7">
+              <div class="node-circle">
+                <span class="node-number">07</span>
+              </div>
+              <div class="node-content">
+                <h4 class="node-title">完成・お渡し</h4>
+                <p class="node-text">
+                  工事が終わったら、最終確認をして問題がなければお客様に新しい空間をお渡しします。
+                </p>
+              </div>
             </div>
 
-            <div class="flow-step-box">
-              <div class="flow-step-number">⑧</div>
-              <h4 class="flow-step-heading">アフターサポート</h4>
-              <p class="flow-step-text">
-                完成後もしっかりサポートします。定期的な点検やお手入れのアドバイスで、長く快適に過ごせるようにお手伝いします。
-              </p>
+            <!-- ステップ8 -->
+            <div class="process-node node-8">
+              <div class="node-circle">
+                <span class="node-number">08</span>
+              </div>
+              <div class="node-content">
+                <h4 class="node-title">アフターサポート</h4>
+                <p class="node-text">
+                  完成後もしっかりサポートします。定期的な点検やお手入れのアドバイスで、長く快適に過ごせるようにお手伝いします。
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -450,9 +445,12 @@
                       stroke="#000"
                       stroke-width="1"
                     />
-                    <text x="50" y="60" text-anchor="middle" font-size="16">
-                      20年
-                    </text>
+                    <text
+                      x="50"
+                      y="60"
+                      text-anchor="middle"
+                      font-size="16"
+                    ></text>
                     <path
                       d="M30,30 C35,25 40,20 50,15 C60,20 65,25 70,30"
                       fill="none"
@@ -467,12 +465,12 @@
                     />
                   </svg>
                 </div>
-                <h3 class="strength-title">この道20年の実績</h3>
+                <h3 class="strength-title">福井の気候の理解</h3>
                 <div class="strength-content">
                   <p>
-                    オフィス空間づくりを手がけて20年。<br />
-                    蓄積された経験・ノウハウから<br />
-                    確かな価値をご提供します。
+                    豪雪地帯や高温多湿など、<br />
+                    福井の特徴的な気候を熟知し、<br />
+                    地域に最適な建築手法を採用します。
                   </p>
                 </div>
               </div>
@@ -499,12 +497,15 @@
                       stroke="#000"
                       stroke-width="1"
                     />
-                    <text x="50" y="70" text-anchor="middle" font-size="12">
-                      地元
-                    </text>
+                    <text
+                      x="50"
+                      y="70"
+                      text-anchor="middle"
+                      font-size="12"
+                    ></text>
                   </svg>
                 </div>
-                <h3 class="strength-title">地域密着</h3>
+                <h3 class="strength-title">地域密着の頼もしさ</h3>
                 <div class="strength-content">
                   <p>
                     幅広い業種の空間づくりに携わり、<br />
