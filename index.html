@@ -158,12 +158,19 @@
             <h2 class="section-title text-white fade">CONCEPT</h2>
             <div class="concept-content">
               <div class="row">
-                <!-- 左側：社名に込めた想い -->
+                <!-- 社名に込めた想い - タイトル -->
                 <div class="col-md-6">
-                  <div class="concept-text-wrapper fade-left">
+                  <div
+                    class="concept-text-wrapper fade-left concept-title-wrapper"
+                  >
                     <h3 class="section-subtitle text-white">
                       「家来」の社名に込めた想い
                     </h3>
+                  </div>
+                </div>
+                <!-- 右側 - 本文テキスト -->
+                <div class="col-md-6">
+                  <div class="concept-text-wrapper fade-right">
                     <div class="section-content">
                       <p class="concept-text text-white">
                         家来と書いて、"うちくる"と読みます。<br />
@@ -171,24 +178,6 @@
                         人と空間が心地よくつながるように計画。<br />
                         地元福井で育んだ知恵とすばやい動きで、<br />
                         お客様の「こうしたい」を形にします。
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- 右側：追加テキスト -->
-                <div class="col-md-6">
-                  <div class="concept-text-wrapper fade-right">
-                    <h3 class="section-subtitle text-white">
-                      空間づくりへのこだわり
-                    </h3>
-                    <div class="section-content">
-                      <p class="concept-text text-white">
-                        すべてのプロジェクトは、お客様の想いを大切に。<br />
-                        素材の選定から施工まで、細部にこだわり、<br />
-                        長く愛される空間をお届けします。<br />
-                        機能性と美しさを両立し、心地よい場所を<br />
-                        一緒に創り上げていきましょう。
                       </p>
                     </div>
                   </div>
@@ -211,113 +200,132 @@
           </p>
         </div>
 
-        <!-- 円形プロセス図 -->
-        <div class="circular-process fade">
+        <!-- 横向きプロセス図 -->
+        <div class="horizontal-process fade">
           <div class="process-container">
-            <!-- メインの線 -->
-            <div class="process-line"></div>
-
-            <!-- ステップ1 -->
-            <div class="process-node node-1">
-              <div class="node-circle">
-                <span class="node-number">01</span>
+            <!-- 上段：ステップ1-4 -->
+            <div class="row process-row mb-5">
+              <!-- ステップ1 -->
+              <div class="col-md-3">
+                <div class="process-node-horizontal">
+                  <div class="node-circle">
+                    <span class="node-number">01</span>
+                  </div>
+                  <div class="node-content">
+                    <h4 class="node-title">ご要望の確認</h4>
+                    <p class="node-text">
+                      お問い合わせをいただいたら、まずはじっくりとお客様の希望や悩みを丁寧に理解します。
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="node-content">
-                <h4 class="node-title">ご要望の確認</h4>
-                <p class="node-text">
-                  お問い合わせをいただいたら、まずはじっくりとお話を聞きます。お客様の希望や悩みを丁寧に理解します。
-                </p>
+
+              <!-- ステップ2 -->
+              <div class="col-md-3">
+                <div class="process-node-horizontal">
+                  <div class="node-circle">
+                    <span class="node-number">02</span>
+                  </div>
+                  <div class="node-content">
+                    <h4 class="node-title">計画づくり</h4>
+                    <p class="node-text">
+                      全体の方向性を決めて計画に反映していきます。お客様の思いを形にするための土台を作ります。
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ステップ3 -->
+              <div class="col-md-3">
+                <div class="process-node-horizontal">
+                  <div class="node-circle">
+                    <span class="node-number">03</span>
+                  </div>
+                  <div class="node-content">
+                    <h4 class="node-title">空間の使い方</h4>
+                    <p class="node-text">
+                      どのように過ごす空間にするかを考えます。実際の生活や使い方を想像しながら計画を進めます。
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- ステップ4 -->
+              <div class="col-md-3">
+                <div class="process-node-horizontal">
+                  <div class="node-circle">
+                    <span class="node-number">04</span>
+                  </div>
+                  <div class="node-content">
+                    <h4 class="node-title">図面作成</h4>
+                    <p class="node-text">
+                      具体的な図面や素材、色の組み合わせなどを決めていきます。目に見える形で計画をまとめます。
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- ステップ2 -->
-            <div class="process-node node-2">
-              <div class="node-circle">
-                <span class="node-number">02</span>
+            <!-- 下段：ステップ5-8 -->
+            <div class="row process-row">
+              <!-- ステップ5 -->
+              <div class="col-md-3">
+                <div class="process-node-horizontal">
+                  <div class="node-circle">
+                    <span class="node-number">05</span>
+                  </div>
+                  <div class="node-content">
+                    <h4 class="node-title">提案・お手続き</h4>
+                    <p class="node-text">
+                      完成した計画と費用をご説明します。ご納得いただけましたら、正式にお手続きを進めます。
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="node-content">
-                <h4 class="node-title">計画づくり</h4>
-                <p class="node-text">
-                  大切な課題を見つけたら、全体の方向性を決めていきます。お客様の思いを形にするための土台を作ります。
-                </p>
-              </div>
-            </div>
 
-            <!-- ステップ3 -->
-            <div class="process-node node-3">
-              <div class="node-circle">
-                <span class="node-number">03</span>
+              <!-- ステップ6 -->
+              <div class="col-md-3">
+                <div class="process-node-horizontal">
+                  <div class="node-circle">
+                    <span class="node-number">06</span>
+                  </div>
+                  <div class="node-content">
+                    <h4 class="node-title">工事・確認</h4>
+                    <p class="node-text">
+                      計画通りに工事を進めます。途中で何度か確認を行い、品質を守りながら進めていきます。
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="node-content">
-                <h4 class="node-title">空間の使い方を考える</h4>
-                <p class="node-text">
-                  どのように過ごす空間にするかを考えます。実際の生活や使い方を想像しながら計画を進めます。
-                </p>
-              </div>
-            </div>
 
-            <!-- ステップ4 -->
-            <div class="process-node node-4">
-              <div class="node-circle">
-                <span class="node-number">04</span>
+              <!-- ステップ7 -->
+              <div class="col-md-3">
+                <div class="process-node-horizontal">
+                  <div class="node-circle">
+                    <span class="node-number">07</span>
+                  </div>
+                  <div class="node-content">
+                    <h4 class="node-title">完成・お渡し</h4>
+                    <p class="node-text">
+                      工事が終わったら、最終確認をして問題がなければお客様に新しい空間をお渡しします。
+                    </p>
+                  </div>
+                </div>
               </div>
-              <div class="node-content">
-                <h4 class="node-title">図面作成</h4>
-                <p class="node-text">
-                  具体的な図面や素材、色の組み合わせなどを決めていきます。目に見える形で計画をまとめます。
-                </p>
-              </div>
-            </div>
 
-            <!-- ステップ5 -->
-            <div class="process-node node-5">
-              <div class="node-circle">
-                <span class="node-number">05</span>
-              </div>
-              <div class="node-content">
-                <h4 class="node-title">提案・お手続き</h4>
-                <p class="node-text">
-                  完成した計画と費用をご説明します。ご納得いただけましたら、正式にお手続きを進めます。
-                </p>
-              </div>
-            </div>
-
-            <!-- ステップ6 -->
-            <div class="process-node node-6">
-              <div class="node-circle">
-                <span class="node-number">06</span>
-              </div>
-              <div class="node-content">
-                <h4 class="node-title">工事・確認</h4>
-                <p class="node-text">
-                  計画通りに工事を進めます。途中で何度か確認を行い、品質を守りながら進めていきます。
-                </p>
-              </div>
-            </div>
-
-            <!-- ステップ7 -->
-            <div class="process-node node-7">
-              <div class="node-circle">
-                <span class="node-number">07</span>
-              </div>
-              <div class="node-content">
-                <h4 class="node-title">完成・お渡し</h4>
-                <p class="node-text">
-                  工事が終わったら、最終確認をして問題がなければお客様に新しい空間をお渡しします。
-                </p>
-              </div>
-            </div>
-
-            <!-- ステップ8 -->
-            <div class="process-node node-8">
-              <div class="node-circle">
-                <span class="node-number">08</span>
-              </div>
-              <div class="node-content">
-                <h4 class="node-title">アフターサポート</h4>
-                <p class="node-text">
-                  完成後もしっかりサポートします。定期的な点検やお手入れのアドバイスで、長く快適に過ごせるようにお手伝いします。
-                </p>
+              <!-- ステップ8 -->
+              <div class="col-md-3">
+                <div class="process-node-horizontal">
+                  <div class="node-circle">
+                    <span class="node-number">08</span>
+                  </div>
+                  <div class="node-content">
+                    <h4 class="node-title">サポート</h4>
+                    <p class="node-text">
+                      完成後も定期的な点検やお手入れのアドバイスで、長く快適に過ごせるようにお手伝いします。
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

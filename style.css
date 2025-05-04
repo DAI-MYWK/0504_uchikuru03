@@ -539,6 +539,14 @@ header {
   padding: 0 20px;
 }
 
+/* タイトル位置調整用スタイル */
+.concept-title-wrapper {
+  display: flex;
+  align-items: flex-start;
+  height: 100%;
+  padding-top: 85px; /* 3行目の位置に合わせるための上部パディング調整 */
+}
+
 .concept-text-wrapper.fade-right {
   transform: translateX(50px);
 }
@@ -574,6 +582,13 @@ header {
   
   .concept-container {
     height: 100vh;
+  }
+  
+  .concept-title-wrapper {
+    padding-top: 0;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
   }
 }
 
@@ -688,7 +703,7 @@ header {
   transform: translateX(3px);
 }
 
-/* ==================== フローセクション（円形プロセス図） ==================== */
+/* ==================== フローセクション（横向きプロセス図） ==================== */
 .flow-intro {
   text-align: center;
   margin-bottom: 50px;
@@ -701,35 +716,22 @@ header {
 #flow {
   position: relative;
   overflow: hidden;
+  background-image: url('img/house_main.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
-/* 右側の背景画像 */
+/* 背景オーバーレイ */
 #flow::before {
   content: '';
   position: absolute;
   top: 0;
-  right: 0;
-  width: 500px;
-  height: 100%;
-  background-image: url('img/house_main.png');
-  background-size: cover;
-  background-position: center;
-  opacity: 0.07; /* 透過性を設定 */
-  z-index: 1;
-}
-
-/* 左側の背景画像 */
-#flow::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
   left: 0;
-  width: 400px;
-  height: 90%;
-  background-image: url('img/house_main.png');
-  background-size: cover;
-  background-position: left bottom;
-  opacity: 0.07; /* 透過性を設定 */
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.93);
   z-index: 1;
 }
 
@@ -739,173 +741,106 @@ header {
   z-index: 2;
 }
 
-/* 円形プロセス図 */
-.circular-process {
+/* 横向きプロセス図 */
+.horizontal-process {
   padding: 30px 0 70px;
   position: relative;
 }
 
 .process-container {
   position: relative;
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* メインの接続線 */
-.process-line {
-  position: absolute;
-  top: 150px;
-  left: 5%;
-  width: 90%;
-  height: 2px;
-  background-color: #e0e0e0;
-  z-index: 1;
+/* プロセスライン関連のスタイル - すべて非表示 */
+.process-line-top,
+.process-line-bottom {
+  display: none;
 }
 
-/* プロセスノード */
-.process-node {
-  display: flex;
+/* 小さい灰色の円 - 接続線上の装飾 - 非表示 */
+.process-node-horizontal::before {
+  display: none;
+}
+
+/* プロセス行 */
+.process-row {
   position: relative;
-  margin-bottom: 80px;
   z-index: 2;
+  margin-bottom: 20px;
 }
 
-.process-node:nth-child(odd) {
-  flex-direction: row;
-  padding-right: 50%;
-  margin-left: 5%;
-}
-
-.process-node:nth-child(even) {
-  flex-direction: row-reverse;
-  padding-left: 50%;
-  margin-right: 5%;
+/* 横向きプロセスノード */
+.process-node-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 20px 10px;
+  position: relative;
+  z-index: 3;
+  border: none;
+  outline: none;
 }
 
 /* ノードの円形部分 */
-.node-circle {
-  flex-shrink: 0;
-  width: 80px;
-  height: 80px;
+.process-node-horizontal .node-circle {
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background-color: #000;
   color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.5rem;
   font-weight: 700;
-  margin-right: 20px;
-  margin-left: 20px;
+  margin-bottom: 15px;
   z-index: 3;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   transition: transform 0.3s ease;
+  border: none;
 }
 
-.process-node:hover .node-circle {
+.process-node-horizontal:hover .node-circle {
   transform: scale(1.1);
 }
 
-/* アクセントノード（アイコン付き） */
-.accent-node {
-  background-color: #666;
-}
-
-.node-icon {
-  font-size: 2rem;
-  font-style: normal;
-}
-
 /* ノードのテキスト部分 */
-.node-content {
+.process-node-horizontal .node-content {
   background-color: #fff;
-  padding: 20px 25px;
+  padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  max-width: 350px;
+  width: 100%;
+  height: 100%;
   transition: transform 0.3s ease;
+  border: none;
+  outline: none;
 }
 
-.process-node:hover .node-content {
+.process-node-horizontal:hover .node-content {
   transform: translateY(-5px);
-}
-
-.node-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #000;
-}
-
-.node-text {
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: #666;
-  margin-bottom: 0;
-}
-
-/* 小さい灰色の円 - 接続線上の装飾 */
-.process-node::before {
-  content: '';
-  position: absolute;
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: #ccc;
-  top: calc(50% - 6px);
-  z-index: 2;
-}
-
-.process-node:nth-child(odd)::before {
-  right: 50%;
-  margin-right: -7px;
-}
-
-.process-node:nth-child(even)::before {
-  left: 50%;
-  margin-left: -7px;
 }
 
 /* レスポンシブ対応 */
 @media (max-width: 991px) {
-  .process-line {
-    left: 30px;
-    width: 2px;
-    height: 90%;
-    top: 5%;
+  .process-node-horizontal {
+    margin-bottom: 30px;
   }
   
-  .process-node,
-  .process-node:nth-child(odd),
-  .process-node:nth-child(even) {
-    flex-direction: row;
-    padding-right: 0;
-    padding-left: 0;
-    margin-left: 0;
-    margin-right: 0;
-    padding-left: 50px;
-    margin-bottom: 40px;
-  }
-  
-  .process-node::before,
-  .process-node:nth-child(odd)::before,
-  .process-node:nth-child(even)::before {
-    left: 30px;
-    top: -30px;
-    margin-left: 0;
-  }
-  
-  .node-circle {
-    margin-right: 15px;
-    margin-left: 0;
+  .process-node-horizontal .node-circle {
     width: 60px;
     height: 60px;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
-  
-  .node-content {
-    max-width: 100%;
+}
+
+@media (max-width: 767px) {
+  .process-row {
+    margin-bottom: 0;
   }
 }
 
