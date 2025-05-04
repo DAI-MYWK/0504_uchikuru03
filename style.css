@@ -363,56 +363,117 @@ header {
   position: relative;
   display: flex;
   align-items: center;
-  justify-content: center;
   color: var(--light-text);
-  text-align: center;
   background-size: cover;
   background-position: center;
 }
 
 .hero-content {
   width: 100%;
-  padding: 0 15px;
+  padding: 0;
   z-index: 10;
   position: relative;
 }
 
-/* タイトルに背景を追加 */
-.hero .en-title,
-.hero .ja-title,
-.hero .sub-copy {
-  display: inline-block;
-  background-color: rgba(0, 0, 0, 0.6);
-  padding: 10px 25px;
-  border-radius: 5px;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  margin-left: auto;
-  margin-right: auto;
+/* 新しいメインビジュアルレイアウト */
+.main-visual-container {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 80px;
+  height: 100%;
 }
 
-.en-title {
-  font-size: 3.5rem;
-  margin-bottom: 10px;
+/* テキストブロック全体 */
+.hero-text-block {
+  text-align: left;
+  max-width: 450px;
+  margin-top: -50px;
+  padding: 30px;
+  border-left: 3px solid rgba(255, 255, 255, 0.7);
+  position: relative;
 }
 
+/* タイトルとサブタイトルのスタイリング */
 .ja-title {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  margin-bottom: 15px;
+  position: relative;
+  padding: 0 0 15px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+  text-shadow: none;
+}
+
+.sub-copy-container {
+  margin-bottom: 25px;
+  line-height: 1.8;
 }
 
 .sub-copy {
-  font-size: 1.2rem;
-  margin-bottom: 40px;
+  font-size: 1.1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 3px 8px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
+/* CTAボタンエリア */
 .cta-buttons {
   display: flex;
-  justify-content: center;
-  gap: 20px;
-  background-color: rgba(0, 0, 0, 0.6);
-  border-radius: 5px;
-  display: inline-flex;
-  padding: 15px 25px;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-top: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+/* ボタンのサイズ調整 */
+.hero-text-block .btn {
+  padding: 8px 20px;
+  font-size: 0.9rem;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .main-visual-container {
+    padding: 0 30px;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hero-text-block {
+    max-width: 100%;
+    margin-top: 0;
+    text-align: center;
+    border-left: none;
+    border-top: 2px solid rgba(255, 255, 255, 0.7);
+    padding-top: 20px;
+  }
+  
+  .ja-title {
+    font-size: 2rem;
+  }
+  
+  .sub-copy {
+    font-size: 1rem;
+    padding-right: 0;
+  }
+  
+  .cta-buttons {
+    justify-content: center;
+  }
 }
 
 /* ==================== コンセプトセクション ==================== */
@@ -634,6 +695,48 @@ header {
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* フローセクションの背景 */
+#flow {
+  position: relative;
+  overflow: hidden;
+}
+
+/* 右側の背景画像 */
+#flow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 100%;
+  background-image: url('img/house_main.png');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.07; /* 透過性を設定 */
+  z-index: 1;
+}
+
+/* 左側の背景画像 */
+#flow::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  height: 90%;
+  background-image: url('img/house_main.png');
+  background-size: cover;
+  background-position: left bottom;
+  opacity: 0.07; /* 透過性を設定 */
+  z-index: 1;
+}
+
+/* コンテンツを背景より前面に */
+#flow .container {
+  position: relative;
+  z-index: 2;
 }
 
 /* 円形プロセス図 */
