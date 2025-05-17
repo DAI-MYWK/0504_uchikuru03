@@ -12,6 +12,22 @@ document.addEventListener("DOMContentLoaded", function () {
     window.scrollTo(0, 0);
   };
 
+  // メインビジュアルの画像切り替え
+  const heroBgs = document.querySelectorAll(".hero-bg");
+  let currentBgIndex = 0;
+
+  // 3秒ごとに背景画像を切り替える
+  setInterval(() => {
+    // 現在の画像を非アクティブに
+    heroBgs[currentBgIndex].classList.remove("active");
+
+    // 次の画像のインデックスを計算
+    currentBgIndex = (currentBgIndex + 1) % heroBgs.length;
+
+    // 次の画像をアクティブに
+    heroBgs[currentBgIndex].classList.add("active");
+  }, 5000);
+
   // 最初はヒーローセクションのフェードインを遅延させる
   const heroElements = document.querySelectorAll(
     ".hero .en-title, .hero .ja-title, .hero .sub-copy, .hero .cta-buttons"
